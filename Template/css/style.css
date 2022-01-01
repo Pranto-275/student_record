@@ -1,0 +1,16 @@
+html {
+    height: auto;
+}
+
+body {
+    background-image: linear-gradient(to bottom right, white, skyblue);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#home .login-form {
+    background-color: aliceblue;
+    padding: 25px;
+    border-radius: 15px;
+}
