@@ -10,32 +10,34 @@ Add Course
 
 <div class="card">
     <div class="card-header text-center">
-        <h4> Add Course</h4>
+        <h4> Edit Course</h4>
 
     </div>
     <div class="card-body text-dark">
-        <form action="{{route('course.store') }}" method="POST">
+        <form action="{{route('course.update',$data->id) }}" method="POST">
+
             @csrf
+            @method("PUT")
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Course Short Name</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="courseshortname">
+                    <input type="text" class="form-control" name="courseshortname" value="{{ $data->cshortname }}">
                 </div>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Course Full Name</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="coursefullname">
+                    <input type="text" class="form-control" name="coursefullname" value="{{$data->cfullname}}">
                 </div>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Creation Date</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="02-01-2022" name="currenttime" value="{{ date('Y-m-d') }}" >
+                    <input type="text" class="form-control" placeholder="02-01-2022" name="currenttime" value="{{ $data->currentdate }}" >
                 </div>
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary">Create Course</button>
+                <button type="submit" class="btn btn-primary">Update Course</button>
             </div>
 
 

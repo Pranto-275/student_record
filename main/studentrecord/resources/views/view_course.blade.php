@@ -10,7 +10,7 @@ view Course
 
             <div class="card">
                 <div class="card-header text-center mb-3">
-                    <h4> Add Course</h4>
+                    <h4> View Courses</h4>
 
                 </div>
                 <div class="card-body p-2">
@@ -34,10 +34,17 @@ view Course
                                 <td>{{ $course->cfullname }}</td>
                                 <td>{{ $course->currentdate }}</td>
                                 <td class="text-center">
-                                    <button class="btn btn-success"> <i class="fas fa-edit    "></i>
-                                    </button>
-                                    <button class="btn btn-danger"> <i class="fas fa-trash-alt"></i>
-                                    </button>
+                                    <a href="{{ route('course.edit',$course->id) }}" class="btn btn-success"> <i class="fas fa-edit"></i>
+                                    </a>
+                                    <form action="{{ route('course.destroy',$course->id) }}" style="display: inline" method="POST">
+
+                                        @csrf
+                                        @method('DELETE')
+
+
+                                        <button type="submit" class="btn btn-danger"> <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
@@ -50,4 +57,8 @@ view Course
                 <!-- END data table -->
 
             </div>
+
+
+
+
 @endsection

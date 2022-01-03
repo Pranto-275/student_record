@@ -72,7 +72,8 @@ class courseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Course::findOrFail($id);
+        return view('edit_course', compact('data'));
     }
 
     /**
@@ -84,7 +85,14 @@ class courseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Course::findOrFail($id);
+
+        $data->cshortname = $request->courseshortname;
+        $data->cfullname = $request->coursefullname;
+        $data->currentdate = $request->currenttime;
+
+        $data->save();
+        return redirect()->route('allcourse');
     }
 
     /**
@@ -95,6 +103,7 @@ class courseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Course::where('id', $id)->delete();
+        return back();
     }
 }
