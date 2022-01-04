@@ -18,6 +18,7 @@ class CreateCoursesTable extends Migration
             $table->string('cshortname');
             $table->string('cfullname');
             $table->string('currentdate');
+
             $table->timestamps();
         });
     }
