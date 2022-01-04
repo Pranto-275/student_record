@@ -18,15 +18,15 @@
                         <a href="#subject" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Subject</a>
                         <ul class="collapse list-unstyled" id="subject">
                             <li>
-                                <a href="add_subject.html">Add Subject</a>
+                                <a href="{{ route('subject.create') }}">Add Subject</a>
                             </li>
                             <li>
-                                <a href="view_subject.html">View Subject</a>
+                                <a href="{{ route('subject.index') }}">View Subject</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="Register_student.html">Register Student</a>
+                        <a href="{{ route('reg.student') }}">Register Student</a>
                     </li>
                     <li>
                         <a href="view_students.html">View Students</a>
