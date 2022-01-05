@@ -29,18 +29,18 @@
                         <a href="{{ route('reg.student') }}">Register Student</a>
                     </li>
                     <li>
-                        <a href="view_students.html">View Students</a>
+                        <a href="{{ route('student.index') }}">View Students</a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="session.html">Session</a>
                         <!-- <ul class="collapse list-unstyled" id="session">
                             <li>
                                 <a href="#">Session</a>
                             </li>
                         </ul> -->
-                    </li>
+                    </li> --}}
                     <li class="mt-5">
-                        <button type="button" name="" id="" class="btn btn-danger btn-sm btn-block">Logout</button>
+                        <a href="{{ route('logout') }}" class="btn btn-danger btn-sm btn-block">Logout</a>
 
                     </li>
                 </ul>

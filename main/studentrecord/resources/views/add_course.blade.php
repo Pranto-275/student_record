@@ -20,12 +20,24 @@ Add Course
                 <label class="col-sm-2 col-form-label">Course Short Name</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="courseshortname">
+
+                    <span style="color: red">
+                        @error('courseshortname')
+                        {{ $message }}
+                        @enderror
+                    </span>
+
                 </div>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Course Full Name</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="coursefullname">
+                    <span style="color: red">
+                        @error('coursefullname')
+                        {{ $message }}
+                        @enderror
+                    </span>
                 </div>
             </div>
             <div class="mb-3 row">
@@ -45,4 +57,27 @@ Add Course
 
 
 
+@endsection
+
+
+
+@section('sweet')
+
+
+@if (Session::has('course_store'))
+
+<script>
+     swal({
+        title: "Successfully",
+        text:"Course Added",
+        icon:"success",
+        button: {
+                text: "okey",
+
+                 },
+
+      });
+</script>
+
+@endif
 @endsection

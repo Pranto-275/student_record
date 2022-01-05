@@ -10,7 +10,7 @@ view Course
 
             <div class="card">
                 <div class="card-header text-center mb-3">
-                    <h4> View Courses</h4>
+                    <h4> View Students</h4>
 
                 </div>
                 <div class="card-body p-2">
@@ -19,30 +19,41 @@ view Course
                         <thead>
                             <tr>
                                 <th>S No</th>
-                                <th>Short Name</th>
-                                <th>Full Name</th>
-                                <th>Created Date</th>
+                                <th>Student_id</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Mobile</th>
+                                <th>Course</th>
+                                <th>Subjects</th>
                                 <th>Action</th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($data as $course)
-                            <tr>
-                                <td>{{ $course->id }}</td>
-                                <td>{{ $course->cshortname }}</td>
-                                <td>{{ $course->cfullname }}</td>
-                                <td>{{ $course->currentdate }}</td>
-                                <td class="text-center">
-                                    <a href="{{ route('course.edit',$course->id) }}" class="btn btn-success"> <i class="fas fa-edit"></i>
-                                    </a>
-                                    <form action="{{ route('course.destroy',$course->id) }}" style="display: inline" method="POST">
 
+
+                            @foreach ($data as $data)
+                            <tr>
+
+
+                              <td>{{ $data->id }}</td>
+                                <td>{{ $data->student_id }}</td>
+                                <td>{{ $data->fname }}</td>
+                                <td>{{ $data->email_id }}</td>
+                                <td>{{ $data->phone }}</td>
+                                <td>{{ $data->course->cshortname }}</td>
+
+                                <td> {{ $data->course->subject1 }}+{{ $data->course->subject2 }}+{{ $data->course->subject3 }}</td>
+
+
+
+                                <td class="text-center">
+                                    <a href="{{ route('student.edit',$data->id) }}" class="btn btn-success"> <i class="fas fa-edit    "></i>
+                                    </a>
+                                    <form action="{{ route('student.destroy',$data->id) }}" style="display: inline" method="POST">
                                         @csrf
                                         @method('DELETE')
-
-
-                                        <button type="submit" class="btn btn-danger"> <i class="fas fa-trash-alt"></i>
+                                        <button class="btn btn-danger"> <i class="fas fa-trash-alt"></i>
                                         </button>
                                     </form>
                                 </td>
@@ -61,27 +72,5 @@ view Course
 
 
 
-@endsection
 
-
-
-@section('sweet')
-
-
-@if (Session::has('course_delete'))
-
-<script>
-     swal({
-        title: "Successfully Delete",
-        text:"Course deleted",
-        icon:"error",
-        button: {
-                text: "okey",
-
-                 },
-
-      });
-</script>
-
-@endif
 @endsection

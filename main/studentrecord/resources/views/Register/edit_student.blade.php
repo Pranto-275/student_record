@@ -9,55 +9,33 @@ Registration Student
 <hr>
 
 
-<form action="{{ route('reg.form') }}" method="POST">
+<form action="{{ route('student.update',$data->id) }}" method="POST">
     @csrf
+    @method('PUT')
     <div class="card">
         <div class="card-header text-center">
-            <h4> Registration Student</h4>
+            <h4> Edit Student</h4>
 
         </div>
         <div class="card-body text-dark">
 
             <div class="mb-3 row">
-<<<<<<< HEAD
-                <label class="col-sm-3 col-form-label">Course Short Name</label>
-                <div class="col-sm-9">
-                    <select name="" id="" class="form-control coursecategory" id="course_id">
-                      @foreach ($data as $item)
-                      <option value="{{ $item->id }}">{{ $item->cshortname }}</option>
-
-=======
                 <label class="col-sm-3 col-form-label">CourseName</label>
                 <div class="col-sm-9">
                     <select name="course_id" class="form-control" >
-                      @foreach ($data as $item)
+                      @foreach ($course as $item)
                       <option value="{{ $item->id }}">{{ $item->cshortname }}</option>
->>>>>>> adminpanel
                       @endforeach
                    </select>
                 </div>
             </div>
-<<<<<<< HEAD
-            <div class="mb-3 row">
-                <label class="col-sm-3 col-form-label">Select Subject</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control allcourses" value="{{ $item->subject1 }} + {{ $item->subject2 }}{{ $item->subject3 }}">
-                </div>
-            </div>
-            <div class="mb-3 row">
-=======
 
             {{-- <div class="mb-3 row">
->>>>>>> adminpanel
                 <label class="col-sm-3 col-form-label">Current Session</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" value="2022-2023">
                 </div>
-<<<<<<< HEAD
-            </div>
-=======
             </div> --}}
->>>>>>> adminpanel
 
         </div>
     </div>
@@ -76,31 +54,23 @@ Registration Student
                     <label for="">First name</label>
                 </div>
                 <div class="col-md-4">
-<<<<<<< HEAD
-                    <input type="text" class="form-control form-control-sm" name="fname">
-=======
-                    <input type="text" class="form-control form-control-sm" name="fname" value="{{ old("fname") }}">
+                    <input type="text" class="form-control form-control-sm" name="fname" value="{{ $data->fname }}">
                     <span style="color: red">
                         @error('fname')
                             {{ $message }}
                         @enderror
                     </span>
->>>>>>> adminpanel
                 </div>
                 <div class="col-md-2">
                     <label for="">Middle name</label>
                 </div>
                 <div class="col-md-4">
-<<<<<<< HEAD
-                    <input type="text" class="form-control form-control-sm" name="mname">
-=======
-                    <input type="text" class="form-control form-control-sm" name="mname" value="{{ old("mname") }}">
+                    <input type="text" class="form-control form-control-sm" name="mname" value="{{ $data->mname }}">
                     <span style="color: red">
                         @error('mname')
                             {{ $message }}
                         @enderror
                     </span>
->>>>>>> adminpanel
                 </div>
             </div>
 
@@ -109,16 +79,12 @@ Registration Student
                     <label for="">last name</label>
                 </div>
                 <div class="col-md-4">
-<<<<<<< HEAD
-                    <input type="text" class="form-control form-control-sm" name="lname">
-=======
-                    <input type="text" class="form-control form-control-sm" name="lname" value="{{ old("lname") }}">
+                    <input type="text" class="form-control form-control-sm" name="lname"  value="{{ $data->lname }}">
                     <span style="color: red">
                         @error('lname')
                             {{ $message }}
                         @enderror
                     </span>
->>>>>>> adminpanel
                 </div>
 
                 <div class="col-md-2">
@@ -126,28 +92,15 @@ Registration Student
                 </div>
                 <div class="col-md-4">
                     <div class="form-check form-check-inline">
-<<<<<<< HEAD
-                        <input class="form-check-input" type="radio"  name="male"  value="male">
+                        <input class="form-check-input" type="radio"  name="gender"  value="{{ $data->gender }}">
                         <label class="form-check-label" for="inlineRadio1">Male</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="female"  value="female">
+                        <input class="form-check-input" type="radio" name="gender"  value="{{ $data->gender }}">
                         <label class="form-check-label" for="inlineRadio1">Female</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="other"  value="other">
-                        <label class="form-check-label" for="inlineRadio1">Other</label>
-                    </div>
-=======
-                        <input class="form-check-input" type="radio"  name="gender"  value="male" value="{{ old("male") }}">
-                        <label class="form-check-label" for="inlineRadio1">Male</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender"  value="female" value="{{ old("female") }}">
-                        <label class="form-check-label" for="inlineRadio1">Female</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender"  value="other" value="{{ old("other") }}">
+                        <input class="form-check-input" type="radio" name="gender"  value="{{ $data->gender }}">
                         <label class="form-check-label" for="inlineRadio1">Other</label>
                     </div>
                     <span style="color: red">
@@ -155,7 +108,6 @@ Registration Student
                             {{ $message }}
                         @enderror
                     </span>
->>>>>>> adminpanel
                 </div>
             </div>
 
@@ -164,31 +116,23 @@ Registration Student
                     <label for="">Guardian name</label>
                 </div>
                 <div class="col-md-4">
-<<<<<<< HEAD
-                    <input type="text" class="form-control form-control-sm" name="guardianame">
-=======
-                    <input type="text" class="form-control form-control-sm" name="guardianame" value="{{ old("guardianame") }}">
+                    <input type="text" class="form-control form-control-sm" name="guardianame" value="{{ $data->g_name }}">
                     <span style="color: red">
                         @error('guardianame')
                             {{ $message }}
                         @enderror
                     </span>
->>>>>>> adminpanel
                 </div>
                 <div class="col-md-2">
                     <label for="">Occupation</label>
                 </div>
                 <div class="col-md-4">
-<<<<<<< HEAD
-                    <input type="text" class="form-control form-control-sm" name="occupation">
-=======
-                    <input type="text" class="form-control form-control-sm" name="occupation" value="{{ old("occupation") }}">
+                    <input type="text" class="form-control form-control-sm" name="occupation" value="{{ $data->occupation }}">
                     <span style="color: red">
                         @error('occupation')
                             {{ $message }}
                         @enderror
                     </span>
->>>>>>> adminpanel
                 </div>
             </div>
             <div class="row mt-3 ">
@@ -196,31 +140,23 @@ Registration Student
                     <label for="">Phone Number</label>
                 </div>
                 <div class="col-md-4">
-<<<<<<< HEAD
-                    <input type="text" class="form-control form-control-sm" name="phone">
-=======
-                    <input type="text" class="form-control form-control-sm" name="phone" value="{{ old("phone") }}">
+                    <input type="text" class="form-control form-control-sm" name="phone" value="{{ $data->phone }}">
                     <span style="color: red">
                         @error('phone')
                             {{ $message }}
                         @enderror
                     </span>
->>>>>>> adminpanel
                 </div>
                 <div class="col-md-2 ">
                     <label for="">Email Id</label>
                 </div>
                 <div class="col-md-4 ">
-<<<<<<< HEAD
-                    <input type="text" class="form-control form-control-sm"name="email">
-=======
-                    <input type="text" class="form-control form-control-sm"name="email" value="{{ old("email") }}">
+                    <input type="text" class="form-control form-control-sm"name="email" value="{{ $data->email_id }}">
                     <span style="color: red">
                         @error('email')
                             {{ $message }}
                         @enderror
                     </span>
->>>>>>> adminpanel
                 </div>
             </div>
             <div class="row mt-3 ">
@@ -228,31 +164,23 @@ Registration Student
                     <label for="">Present Address</label>
                 </div>
                 <div class="col-md-4 ">
-<<<<<<< HEAD
-                    <input type="text" class="form-control form-control-sm" name="paddress">
-=======
-                    <input type="text" class="form-control form-control-sm" name="paddress" value="{{ old("paddress") }}">
+                    <input type="text" class="form-control form-control-sm" name="paddress" value="{{ $data->p_address }}">
                     <span style="color: red">
                         @error('paddress')
                             {{ $message }}
                         @enderror
                     </span>
->>>>>>> adminpanel
                 </div>
                 <div class="col-md-2">
                     <label for="">Permanent Address</label>
                 </div>
                 <div class="col-md-4">
-<<<<<<< HEAD
-                    <input type="text" class="form-control form-control-sm" name="peraddress">
-=======
-                    <input type="text" class="form-control form-control-sm" name="peraddress" value="{{ old("peraddress") }}">
+                    <input type="text" class="form-control form-control-sm" name="peraddress" value="{{ $data->per_address }}">
                     <span style="color: red">
                         @error('peraddress')
                             {{ $message }}
                         @enderror
                     </span>
->>>>>>> adminpanel
                 </div>
             </div>
 
@@ -263,20 +191,10 @@ Registration Student
 
 
     <div class="text-center mt-3">
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-primary">Update Info</button>
     </div>
 
 
 </form>
 @endsection
-<<<<<<< HEAD
 
-@section('script')
-<script>
-
-
-
-</script>
-@endsection
-=======
->>>>>>> adminpanel

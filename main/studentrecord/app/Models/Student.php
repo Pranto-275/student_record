@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
+<<<<<<< HEAD
+=======
+
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
+>>>>>>> adminpanel
 }
