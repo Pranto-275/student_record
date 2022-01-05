@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Course;
-
+use App\Models\Student;
 use Illuminate\Http\Request;
 
-class courseController extends Controller
+class managestudentcontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,6 @@ class courseController extends Controller
      */
     public function index()
     {
-        return view('add_course');
     }
 
     /**
@@ -25,6 +23,7 @@ class courseController extends Controller
      */
     public function create()
     {
+        //
     }
 
     /**
@@ -35,32 +34,8 @@ class courseController extends Controller
      */
     public function store(Request $request)
     {
-
-        $request->validate([
-            'courseshortname' => 'required',
-            'coursefullname' => 'required',
-        ]);
-
-
-
-        $data = new Course();
-        $data->cshortname = $request->courseshortname;
-        $data->cfullname = $request->coursefullname;
-        $data->currentdate = $request->currenttime;
-        $data->save();
-
-        return back()->with('course_store', "Course store successfully");
+        //
     }
-
-
-    //view all data
-
-    public function showcourse()
-    {
-        $data = Course::orderBy('id', 'desc')->get();
-        return view('view_course', compact('data'));
-    }
-
 
     /**
      * Display the specified resource.
@@ -81,8 +56,6 @@ class courseController extends Controller
      */
     public function edit($id)
     {
-        $data = Course::findOrFail($id);
-        return view('edit_course', compact('data'));
     }
 
     /**
@@ -94,15 +67,7 @@ class courseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Course::findOrFail($id);
-
-        $data->cshortname = $request->courseshortname;
-        $data->cfullname = $request->coursefullname;
-        $data->currentdate = $request->currenttime;
-
-        $data->save();
-
-        return redirect()->route('allcourse');
+        //
     }
 
     /**
@@ -113,7 +78,6 @@ class courseController extends Controller
      */
     public function destroy($id)
     {
-        Course::where('id', $id)->delete();
-        return back()->with('course_delete', "Course Deleted successfully");
+        //
     }
 }

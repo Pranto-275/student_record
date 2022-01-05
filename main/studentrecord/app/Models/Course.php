@@ -29,4 +29,10 @@ class Course extends Model
      * @var array
      */
     protected $fillable = ['cshortname', 'cfullname', 'currentdate'];
+
+
+    public function student()
+    {
+        return $this->hasMany(Student::class);
+    }
 }

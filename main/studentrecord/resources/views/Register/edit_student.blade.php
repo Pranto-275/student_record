@@ -9,11 +9,12 @@ Registration Student
 <hr>
 
 
-<form action="{{ route('reg.form') }}" method="POST">
+<form action="{{ route('student.update',$data->id) }}" method="POST">
     @csrf
+    @method('PUT')
     <div class="card">
         <div class="card-header text-center">
-            <h4> Registration Student</h4>
+            <h4> Edit Student</h4>
 
         </div>
         <div class="card-body text-dark">
@@ -22,7 +23,7 @@ Registration Student
                 <label class="col-sm-3 col-form-label">CourseName</label>
                 <div class="col-sm-9">
                     <select name="course_id" class="form-control" >
-                      @foreach ($data as $item)
+                      @foreach ($course as $item)
                       <option value="{{ $item->id }}">{{ $item->cshortname }}</option>
                       @endforeach
                    </select>
@@ -53,7 +54,7 @@ Registration Student
                     <label for="">First name</label>
                 </div>
                 <div class="col-md-4">
-                    <input type="text" class="form-control form-control-sm" name="fname" value="{{ old("fname") }}">
+                    <input type="text" class="form-control form-control-sm" name="fname" value="{{ $data->fname }}">
                     <span style="color: red">
                         @error('fname')
                             {{ $message }}
@@ -64,7 +65,7 @@ Registration Student
                     <label for="">Middle name</label>
                 </div>
                 <div class="col-md-4">
-                    <input type="text" class="form-control form-control-sm" name="mname" value="{{ old("mname") }}">
+                    <input type="text" class="form-control form-control-sm" name="mname" value="{{ $data->mname }}">
                     <span style="color: red">
                         @error('mname')
                             {{ $message }}
@@ -78,7 +79,7 @@ Registration Student
                     <label for="">last name</label>
                 </div>
                 <div class="col-md-4">
-                    <input type="text" class="form-control form-control-sm" name="lname" value="{{ old("lname") }}">
+                    <input type="text" class="form-control form-control-sm" name="lname"  value="{{ $data->lname }}">
                     <span style="color: red">
                         @error('lname')
                             {{ $message }}
@@ -91,15 +92,15 @@ Registration Student
                 </div>
                 <div class="col-md-4">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio"  name="gender"  value="male" value="{{ old("male") }}">
+                        <input class="form-check-input" type="radio"  name="gender"  value="{{ $data->gender }}">
                         <label class="form-check-label" for="inlineRadio1">Male</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender"  value="female" value="{{ old("female") }}">
+                        <input class="form-check-input" type="radio" name="gender"  value="{{ $data->gender }}">
                         <label class="form-check-label" for="inlineRadio1">Female</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender"  value="other" value="{{ old("other") }}">
+                        <input class="form-check-input" type="radio" name="gender"  value="{{ $data->gender }}">
                         <label class="form-check-label" for="inlineRadio1">Other</label>
                     </div>
                     <span style="color: red">
@@ -115,7 +116,7 @@ Registration Student
                     <label for="">Guardian name</label>
                 </div>
                 <div class="col-md-4">
-                    <input type="text" class="form-control form-control-sm" name="guardianame" value="{{ old("guardianame") }}">
+                    <input type="text" class="form-control form-control-sm" name="guardianame" value="{{ $data->g_name }}">
                     <span style="color: red">
                         @error('guardianame')
                             {{ $message }}
@@ -126,7 +127,7 @@ Registration Student
                     <label for="">Occupation</label>
                 </div>
                 <div class="col-md-4">
-                    <input type="text" class="form-control form-control-sm" name="occupation" value="{{ old("occupation") }}">
+                    <input type="text" class="form-control form-control-sm" name="occupation" value="{{ $data->occupation }}">
                     <span style="color: red">
                         @error('occupation')
                             {{ $message }}
@@ -139,7 +140,7 @@ Registration Student
                     <label for="">Phone Number</label>
                 </div>
                 <div class="col-md-4">
-                    <input type="text" class="form-control form-control-sm" name="phone" value="{{ old("phone") }}">
+                    <input type="text" class="form-control form-control-sm" name="phone" value="{{ $data->phone }}">
                     <span style="color: red">
                         @error('phone')
                             {{ $message }}
@@ -150,7 +151,7 @@ Registration Student
                     <label for="">Email Id</label>
                 </div>
                 <div class="col-md-4 ">
-                    <input type="text" class="form-control form-control-sm"name="email" value="{{ old("email") }}">
+                    <input type="text" class="form-control form-control-sm"name="email" value="{{ $data->email_id }}">
                     <span style="color: red">
                         @error('email')
                             {{ $message }}
@@ -163,7 +164,7 @@ Registration Student
                     <label for="">Present Address</label>
                 </div>
                 <div class="col-md-4 ">
-                    <input type="text" class="form-control form-control-sm" name="paddress" value="{{ old("paddress") }}">
+                    <input type="text" class="form-control form-control-sm" name="paddress" value="{{ $data->p_address }}">
                     <span style="color: red">
                         @error('paddress')
                             {{ $message }}
@@ -174,7 +175,7 @@ Registration Student
                     <label for="">Permanent Address</label>
                 </div>
                 <div class="col-md-4">
-                    <input type="text" class="form-control form-control-sm" name="peraddress" value="{{ old("peraddress") }}">
+                    <input type="text" class="form-control form-control-sm" name="peraddress" value="{{ $data->per_address }}">
                     <span style="color: red">
                         @error('peraddress')
                             {{ $message }}
@@ -190,9 +191,10 @@ Registration Student
 
 
     <div class="text-center mt-3">
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-primary">Update Info</button>
     </div>
 
 
 </form>
 @endsection
+
